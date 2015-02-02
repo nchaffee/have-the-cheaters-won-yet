@@ -10,7 +10,7 @@ get '/' do
     @during_game = false
   else
     match = /England%20(\d+).*Seattle%20(\d+)/.match(score)
-    new_england, seattle = match[1], match[2]
+    new_england, seattle = match[1].to_i, match[2].to_i
     @bastards_won = new_england > seattle ? 'YES' : 'NO'
     @during_game = /FINAL/.match(score) ? false : true
   end
